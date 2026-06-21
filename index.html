@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đại Gia Đình 70–70A Trường Định</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:#1a1a1a;background:#FAF8F3}
+
+    /* BANNER */
+    .milestone-banner{background:linear-gradient(135deg,#f0a500,#e08800);padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:center;gap:12px;color:#fff;font-size:14px;font-weight:600;text-align:center}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;
+      background-image:url('Photo and Video/photos 2026/z7957068202322_1d2a44b7461ca97d50fcd4980a9e2aec.jpg');
+      background-size:cover;background-position:center top}
+    .hero-bg{display:none}
+    .hero-overlay{position:absolute;inset:0;z-index:1;
+      backdrop-filter:blur(3px) brightness(0.55) saturate(1.4);
+      background:linear-gradient(135deg,rgba(15,80,45,0.62) 0%,rgba(20,110,60,0.45) 45%,rgba(160,100,0,0.42) 100%)}
+    .hero-nav,.hero-body,.hero>div:last-child{position:relative;z-index:2}
+    .hero-nav{display:flex;align-items:center;gap:14px;padding:1.4rem 2rem;position:relative;z-index:2}
+    .hero-nav-links{display:flex;gap:1.6rem;margin-left:auto}
+    .hero-nav-link{color:rgba(255,255,255,.8);font-size:13px;text-decoration:none;letter-spacing:.5px;transition:color .2s}
+    .hero-nav-link:hover{color:#fff}
+    .hero-body{flex:1;display:flex;align-items:center;padding:2rem 2rem 4rem;max-width:1100px;margin:0 auto;width:100%;gap:3rem}
+    .hero-text{flex:1;min-width:0}
+    .hero-badge{display:inline-block;background:rgba(255,255,255,.18);color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.3);margin-bottom:1.2rem}
+    .hero h1{font-size:56px;font-weight:700;color:#fff;line-height:1.15;margin-bottom:.8rem}
+    .hero h1 span{display:block;font-size:36px;font-weight:400;opacity:.9}
+    .hero-sub{font-size:16px;color:rgba(255,255,255,.85);max-width:480px;margin-bottom:2.2rem;line-height:1.75}
+    .hero-stats{display:flex;gap:1.8rem;flex-wrap:wrap}
+    .hero-stat{text-align:center;color:#fff}
+    .hero-stat-num{font-size:30px;font-weight:700;display:block}
+    .hero-stat-label{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:1.5px;text-transform:uppercase}
+    .hero-divider{width:1px;height:40px;background:rgba(255,255,255,.3);align-self:center}
+    .hero-crest-side{flex-shrink:0;display:flex;align-items:center;justify-content:center}
+
+    /* CREST TOP-LEFT */
+    .crest-topbar{display:flex;align-items:center;gap:10px}
+    .crest-topbar-name{color:#fff;font-size:13px;font-weight:600;line-height:1.3;letter-spacing:.3px}
+    .crest-topbar-name span{display:block;font-size:11px;font-weight:400;opacity:.75;letter-spacing:.5px}
+
+    /* LAYOUT */
+    .section{padding:3.5rem 1.5rem;max-width:960px;margin:0 auto}
+    .section-header{text-align:center;margin-bottom:2rem}
+    .section-tag{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#0F6E56;background:#E1F5EE;padding:4px 14px;border-radius:20px;margin-bottom:.7rem;font-weight:600}
+    .section-title{font-size:28px;font-weight:700;margin-bottom:.5rem;color:#111}
+    .section-desc{font-size:15px;color:#666;line-height:1.7;max-width:580px;margin:0 auto}
+    .sep{border:none;border-top:1px solid #E5DDD0}
+    .bg-alt{background:#F2EDE3}
+
+    /* VALUES */
+    .values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+    .value-card{background:#FFFDF9;border:1px solid #E8E0D0;border-radius:16px;padding:1.4rem;text-align:center;transition:box-shadow .2s,transform .2s}
+    .value-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-2px)}
+    .value-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .9rem;font-size:22px}
+    .vi-green{background:#E1F5EE;color:#0F6E56}
+    .vi-amber{background:#FAEEDA;color:#854F0B}
+    .vi-purple{background:#EEEDFE;color:#534AB7}
+    .vi-coral{background:#FAECE7;color:#993C1D}
+    .value-card h3{font-size:14px;font-weight:600;margin-bottom:.4rem;color:#111}
+    .value-card p{font-size:13px;color:#777;line-height:1.6}
+
+    /* MEMBERS */
+    .gen-label{font-size:11px;font-weight:700;color:#0F6E56;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;margin-bottom:1.5rem}
+    .member-card{background:#FFFDF9;border:1px solid #E8E0D0;border-radius:14px;padding:1.2rem 1rem;text-align:center;transition:box-shadow .2s}
+    .member-card:hover{box-shadow:0 6px 18px rgba(0,0,0,.07)}
+    .member-avatar{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;margin:0 auto .7rem}
+    .member-name{font-size:13px;font-weight:600;margin-bottom:2px;color:#111}
+    .member-role{font-size:11px;color:#888}
+    .member-dob{font-size:10px;color:#aaa;margin-top:3px}
+
+    /* THEMES */
+    .themes-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .theme-pill{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border:1px solid #ddd;border-radius:30px;cursor:pointer;background:#fff;font-size:13px;color:#444;transition:all .15s;font-family:inherit}
+    .theme-pill:hover{background:#f0f0f0;border-color:#bbb}
+    .theme-pill.active{background:#E1F5EE;border-color:#5DCAA5;color:#085041;font-weight:600}
+
+    /* PHOTO TIMELINE */
+    .year-group{margin-bottom:2.8rem}
+    .year-label{display:flex;align-items:center;gap:14px;margin-bottom:1rem}
+    .year-badge{background:linear-gradient(135deg,#1D9E75,#0F6E56);color:#fff;font-size:14px;font-weight:700;padding:6px 20px;border-radius:30px;white-space:nowrap}
+    .year-line{flex:1;height:1px;background:#eee}
+    .year-count{font-size:12px;color:#aaa;white-space:nowrap}
+
+    /* MASONRY GRID */
+    .photo-masonry{columns:3;column-gap:8px}
+    .photo-masonry .pm-item{break-inside:avoid;margin-bottom:8px;position:relative;border-radius:10px;overflow:hidden;cursor:pointer;display:block}
+    .photo-masonry .pm-item img{width:100%;display:block;transition:transform .3s}
+    .photo-masonry .pm-item:hover img{transform:scale(1.04)}
+    .photo-masonry .pm-item .pm-overlay{position:absolute;inset:0;background:rgba(15,110,86,.65);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+    .photo-masonry .pm-item:hover .pm-overlay{opacity:1}
+    .pm-overlay i{font-size:28px;color:#fff}
+
+    /* VIDEO */
+    .video-section-wrap{width:100vw;height:85vh;position:relative;left:50%;transform:translateX(-50%);background:#000}
+    .video-section-wrap video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+    .video-caption{background:linear-gradient(135deg,#085041,#0F6E56);color:rgba(255,255,255,.9);font-size:13px;font-weight:500;padding:.8rem 2rem;display:flex;align-items:center;gap:8px;width:100vw;position:relative;left:50%;transform:translateX(-50%);letter-spacing:.3px}
+    .video-caption i{color:#FFD166;font-size:16px}
+
+    /* LIGHTBOX */
+    #lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;flex-direction:column}
+    #lb.open{display:flex}
+    #lb img{max-width:92vw;max-height:88vh;border-radius:8px;object-fit:contain}
+    #lb-close{position:fixed;top:18px;right:22px;color:#fff;font-size:32px;cursor:pointer;z-index:10000;line-height:1}
+    #lb-prev,#lb-next{position:fixed;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;background:rgba(255,255,255,.1);border:none;padding:10px 14px;border-radius:8px;z-index:10000}
+    #lb-prev{left:12px}
+    #lb-next{right:12px}
+    #lb-counter{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:13px;z-index:10000}
+
+    /* QUOTE */
+    .quote-section{background:linear-gradient(135deg,#085041,#0F6E56);padding:3.5rem 2rem;text-align:center}
+    .quote-mark{font-size:72px;color:rgba(255,255,255,.18);line-height:.8;font-family:Georgia,serif}
+    .quote-text{font-size:20px;font-weight:500;color:#fff;line-height:1.7;max-width:560px;margin:.8rem auto 1.2rem;font-style:italic}
+    .quote-attr{font-size:13px;color:rgba(255,255,255,.55);letter-spacing:1px}
+
+    /* MEMORIES */
+    .memories-row{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
+    .memories-row::-webkit-scrollbar{height:4px}
+    .memories-row::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
+    .memory-chip{flex-shrink:0;background:#FFFDF9;border:1px solid #E8E0D0;border-radius:30px;padding:9px 18px;font-size:13px;display:flex;align-items:center;gap:7px;color:#555}
+    .memory-chip i{font-size:15px;color:#1D9E75}
+
+    /* UPLOAD */
+    .upload-zone{border:2px dashed #ccc;border-radius:16px;padding:2.5rem;text-align:center;color:#888;cursor:pointer;transition:border-color .2s,background .2s}
+    .upload-zone:hover{border-color:#1D9E75;background:#f5fdf9}
+    .upload-zone i{font-size:34px;color:#1D9E75;display:block;margin-bottom:.8rem}
+    .upload-zone strong{display:block;font-size:15px;font-weight:600;color:#222;margin-bottom:.3rem}
+
+    /* FOOTER */
+    .footer{background:#04342C;padding:2.5rem 1.5rem;text-align:center}
+    .footer-logo{font-size:22px;font-weight:700;color:#fff;margin-bottom:.4rem}
+    .footer-sub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:1.5rem}
+    .footer-links{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem}
+    .footer-link{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+    .footer-link:hover{color:#fff}
+    .footer-copy{font-size:12px;color:rgba(255,255,255,.3)}
+
+    @media(max-width:640px){
+      .hero h1{font-size:32px}
+      .hero-divider{display:none}
+      .photo-masonry{columns:2}
+      #lb-prev,#lb-next{font-size:24px;padding:8px 10px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Xem ảnh">
+  <span id="lb-close" onclick="lbClose()" aria-label="Đóng">&#x2715;</span>
+  <button id="lb-prev" onclick="lbNav(-1)" aria-label="Ảnh trước"><i class="ti ti-chevron-left"></i></button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next" onclick="lbNav(1)" aria-label="Ảnh tiếp theo"><i class="ti ti-chevron-right"></i></button>
+  <div id="lb-counter"></div>
+</div>
+
+<!-- MILESTONE BANNER -->
+<div class="milestone-banner">
+  <i class="ti ti-confetti"></i>
+  Sắp kỷ niệm 50 năm — Một hành trình yêu thương trọn vẹn của đại gia đình
+  <i class="ti ti-confetti"></i>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+
+  <!-- LỚP PHỦ MỜ -->
+  <div class="hero-overlay"></div>
+
+  <!-- NAVBAR với logo góc trái -->
+  <div class="hero-nav">
+    <!-- LOGO + TÊN GIA ĐÌNH -->
+    <div class="crest-topbar">
+      <svg width="52" height="52" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-label="Logo gia đình">
+        <circle cx="90" cy="90" r="86" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+        <circle cx="90" cy="90" r="72" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <g stroke="rgba(255,255,255,0.65)" stroke-width="1.5" fill="none">
+          <path d="M30,112 Q22,90 36,74"/><path d="M30,112 Q16,96 28,78"/><path d="M30,112 Q32,88 48,77"/>
+          <ellipse cx="31" cy="81" rx="9" ry="5" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-30,31,81)"/>
+          <ellipse cx="21" cy="93" rx="8" ry="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(-50,21,93)"/>
+          <ellipse cx="43" cy="79" rx="9" ry="4" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(-10,43,79)"/>
+        </g>
+        <g stroke="rgba(255,255,255,0.65)" stroke-width="1.5" fill="none">
+          <path d="M150,112 Q158,90 144,74"/><path d="M150,112 Q164,96 152,78"/><path d="M150,112 Q148,88 132,77"/>
+          <ellipse cx="149" cy="81" rx="9" ry="5" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(30,149,81)"/>
+          <ellipse cx="159" cy="93" rx="8" ry="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(50,159,93)"/>
+          <ellipse cx="137" cy="79" rx="9" ry="4" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1" transform="rotate(10,137,79)"/>
+        </g>
+        <g transform="translate(90,86)">
+          <polygon points="0,-36 34,2 -34,2" fill="rgba(255,255,255,0.92)"/>
+          <rect x="-25" y="2" width="50" height="32" rx="2" fill="rgba(255,255,255,0.85)"/>
+          <rect x="-8" y="15" width="16" height="19" rx="3" fill="rgba(15,110,86,0.65)"/>
+          <rect x="-21" y="7" width="11" height="10" rx="2" fill="rgba(15,110,86,0.45)"/>
+          <rect x="10" y="7" width="11" height="10" rx="2" fill="rgba(15,110,86,0.45)"/>
+          <rect x="15" y="-40" width="7" height="15" rx="1" fill="rgba(255,255,255,0.78)"/>
+        </g>
+        <g transform="translate(90,142)">
+          <path d="M0,9 C0,9 -16,-3 -16,-13 C-16,-20 -9,-25 0,-18 C9,-25 16,-20 16,-13 C16,-3 0,9 0,9 Z" fill="rgba(255,100,100,0.88)"/>
+        </g>
+        <circle cx="76" cy="150" r="4" fill="rgba(255,220,100,0.9)"/>
+        <circle cx="90" cy="154" r="4" fill="rgba(255,220,100,0.9)"/>
+        <circle cx="104" cy="150" r="4" fill="rgba(255,220,100,0.9)"/>
+      </svg>
+      <div class="crest-topbar-name">
+        Đại Gia Đình
+        <span>70 – 70A Trường Định</span>
+      </div>
+    </div>
+
+    <!-- NAV LINKS -->
+    <div class="hero-nav-links">
+      <a class="hero-nav-link" href="#album">Album ảnh</a>
+      <a class="hero-nav-link" href="#video">Video</a>
+      <a class="hero-nav-link" href="#members">Thành viên</a>
+      <a class="hero-nav-link" href="#milestone">Dấu mốc</a>
+    </div>
+  </div>
+
+  <!-- NỘI DUNG HERO: TEXT TRÁI + HÌNH TRANG TRÍ PHẢI -->
+  <div class="hero-body">
+    <div class="hero-text">
+      <div class="hero-badge">Yêu thương · Gắn kết · Sẻ chia</div>
+      <h1>
+        Nơi Yêu Thương
+        <span>Luôn Hiện Diện</span>
+      </h1>
+      <p class="hero-sub">Gắn kết từng trái tim, chia sẻ từng khoảnh khắc, nâng đỡ nhau trên mọi hành trình cuộc sống. Ba thế hệ — một mái nhà.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-label">Thế hệ</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="hero-stat-num">9</span><span class="hero-stat-label">Thành viên</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="hero-stat-num">~50</span><span class="hero-stat-label">Năm kỷ niệm</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><span class="hero-stat-num">∞</span><span class="hero-stat-label">Tình yêu</span></div>
+      </div>
+    </div>
+
+    <!-- LOGO LỚN PHÍA PHẢI -->
+    <div class="hero-crest-side">
+      <svg width="300" height="300" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="90" cy="90" r="86" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+        <circle cx="90" cy="90" r="74" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <g stroke="rgba(255,255,255,0.7)" stroke-width="1.2" fill="none">
+          <path d="M28,110 Q22,90 35,75"/><path d="M28,110 Q18,95 28,80"/><path d="M28,110 Q30,88 45,78"/>
+          <ellipse cx="30" cy="82" rx="8" ry="5" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.5)" stroke-width="1" transform="rotate(-30,30,82)"/>
+          <ellipse cx="22" cy="92" rx="7" ry="4" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-50,22,92)"/>
+          <ellipse cx="40" cy="80" rx="8" ry="4" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(-10,40,80)"/>
+        </g>
+        <g stroke="rgba(255,255,255,0.7)" stroke-width="1.2" fill="none">
+          <path d="M152,110 Q158,90 145,75"/><path d="M152,110 Q162,95 152,80"/><path d="M152,110 Q150,88 135,78"/>
+          <ellipse cx="150" cy="82" rx="8" ry="5" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.5)" stroke-width="1" transform="rotate(30,150,82)"/>
+          <ellipse cx="158" cy="92" rx="7" ry="4" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(50,158,92)"/>
+          <ellipse cx="140" cy="80" rx="8" ry="4" fill="rgba(255,255,255,0.22)" stroke="rgba(255,255,255,0.45)" stroke-width="1" transform="rotate(10,140,80)"/>
+        </g>
+        <g transform="translate(90,88)">
+          <polygon points="0,-34 32,2 -32,2" fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,1)" stroke-width="1"/>
+          <rect x="-24" y="2" width="48" height="30" rx="2" fill="rgba(255,255,255,0.85)" stroke="rgba(255,255,255,1)" stroke-width="1"/>
+          <rect x="-7" y="14" width="14" height="18" rx="3" fill="rgba(15,110,86,0.7)"/>
+          <rect x="-20" y="8" width="10" height="9" rx="2" fill="rgba(15,110,86,0.5)"/>
+          <rect x="10" y="8" width="10" height="9" rx="2" fill="rgba(15,110,86,0.5)"/>
+          <rect x="14" y="-38" width="7" height="14" rx="1" fill="rgba(255,255,255,0.8)"/>
+        </g>
+        <g transform="translate(90,140)">
+          <path d="M0,8 C0,8 -18,-4 -18,-14 C-18,-22 -10,-28 0,-20 C10,-28 18,-22 18,-14 C18,-4 0,8 0,8 Z" fill="rgba(255,100,100,0.88)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+        </g>
+        <circle cx="75" cy="148" r="4" fill="rgba(255,220,100,0.9)"/>
+        <circle cx="90" cy="152" r="4" fill="rgba(255,220,100,0.9)"/>
+        <circle cx="105" cy="148" r="4" fill="rgba(255,220,100,0.9)"/>
+        <text x="90" y="46" text-anchor="middle" font-size="9" font-weight="700" fill="rgba(255,255,255,0.88)" letter-spacing="2" font-family="'Segoe UI',sans-serif">70 – 70A</text>
+        <text x="90" y="58" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.72)" letter-spacing="1" font-family="'Segoe UI',sans-serif">TRƯỜNG ĐỊNH</text>
+        <text x="90" y="172" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)" letter-spacing="1" font-family="'Segoe UI',sans-serif">~50 NĂM YÊU THƯƠNG</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div style="text-align:center;padding-bottom:1.5rem;color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;">
+    <div style="margin-bottom:4px;">CUỘN XUỐNG</div>
+    <i class="ti ti-chevrons-down" style="font-size:20px;animation:bounce 1.5s infinite;display:inline-block;"></i>
+  </div>
+</div>
+
+<style>
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+@media(max-width:768px){
+  .hero-body{flex-direction:column;gap:1.5rem;padding:1.5rem 1.5rem 2.5rem}
+  .hero-crest-side svg{width:200px;height:200px}
+  .hero h1{font-size:36px}
+  .hero-nav-links{display:none}
+}
+</style>
+
+<!-- GIÁ TRỊ CỐT LÕI -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-tag">Giá trị cốt lõi</div>
+    <h2 class="section-title">Những điều làm nên gia đình chúng ta</h2>
+    <p class="section-desc">Mỗi gia đình có một linh hồn riêng — đây là những điều chúng ta trân trọng và cùng nhau vun đắp.</p>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-icon vi-green"><i class="ti ti-heart"></i></div>
+      <h3>Yêu thương vô điều kiện</h3>
+      <p>Yêu nhau không phải vì hoàn hảo, mà vì chúng ta là một gia đình.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon vi-amber"><i class="ti ti-users"></i></div>
+      <h3>Gắn kết bền chặt</h3>
+      <p>Khoảng cách không thể chia cắt những trái tim cùng nhịp đập.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon vi-purple"><i class="ti ti-hand-stop"></i></div>
+      <h3>Giúp đỡ lẫn nhau</h3>
+      <p>Khi một người vấp ngã, cả gia đình cùng nhau đứng dậy.</p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon vi-coral"><i class="ti ti-photo"></i></div>
+      <h3>Trân trọng kỷ niệm</h3>
+      <p>Mỗi khoảnh khắc bên nhau là một báu vật không thể thay thế.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- THÀNH VIÊN -->
+<div class="section" id="members">
+  <div class="section-header">
+    <div class="section-tag">Thành viên gia đình</div>
+    <h2 class="section-title">9 trái tim — một gia đình</h2>
+    <p class="section-desc">Ba thế hệ, một mái nhà, vô vàn yêu thương.</p>
+  </div>
+
+  <div class="gen-label"><i class="ti ti-heart"></i> Ông Bà — Gốc rễ gia đình
+    <span style="font-weight:400;font-size:11px;color:#888;margin-left:8px;display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap;">
+      <i class="ti ti-map-pin" style="font-size:12px;color:#c9a84c;"></i>
+      Từ 1995 đến nay: 70 Trương Định, P. 1, Tân An, Long An
+      <span style="color:#ccc;margin:0 4px;">·</span>
+      <i class="ti ti-history" style="font-size:12px;color:#aaa;"></i>
+      <span style="color:#bbb;">Trước đó: 64 Hoàng Hoa Thám, P. 2, Tân An, Long An</span>
+    </span>
+  </div>
+  <div class="members-grid">
+    <div class="member-card">
+      <div class="member-avatar" style="background:#E1F5EE;color:#0F6E56;">NVN</div>
+      <div class="member-name">Nguyễn Văn Ngôi</div>
+      <div class="member-role">Ông Nội · Gốc rễ gia đình</div>
+      <div class="member-dob">22/07/1956 · Thế hệ 1</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar" style="background:#E1F5EE;color:#085041;">NTP</div>
+      <div class="member-name">Nguyễn Thị Phỉ</div>
+      <div class="member-role">Bà Nội · Hơi ấm gia đình</div>
+      <div class="member-dob">25/05/1955 · Thế hệ 1</div>
+    </div>
+  </div>
+
+  <div class="gen-label"><i class="ti ti-home"></i> Gia đình anh Vinh <span style="font-weight:400;font-size:11px;color:#888;margin-left:8px;"><i class="ti ti-map-pin" style="font-size:12px;"></i> 22 Đường số 7, Khu Him Lam, P. Tân Hưng, TP.HCM</span></div>
+  <div class="members-grid">
+    <div class="member-card">
+      <div class="member-avatar" style="background:#FAEEDA;color:#854F0B;">NQV</div>
+      <div class="member-name">Nguyễn Quang Vinh</div>
+      <div class="member-role">Ba · Trụ cột vững chắc</div>
+      <div class="member-dob">13/03/1979 · Thế hệ 2</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar" style="background:#FBEAF0;color:#993556;">HTB</div>
+      <div class="member-name">Hồ Thị Thanh Bình</div>
+      <div class="member-role">Mẹ · Yêu thương dịu dàng</div>
+      <div class="member-dob">02/11/1978 · Thế hệ 2</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar" style="background:#EEEDFE;color:#534AB7;">NHK</div>
+      <div class="member-name">Nguyễn Hồ Khang</div>
+      <div class="member-role">Con trai · Chàng trai tài năng</div>
+      <div class="member-dob">11/04/2005 · Thế hệ 3</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar" style="background:#FBEAF0;color:#D4537E;">NST</div>
+      <div class="member-name">Nguyễn Hồ Song Thư</div>
+      <div class="member-role">Con gái · Nụ cười gia đình</div>
+      <div class="member-dob">11/08/2014 · Thế hệ 3</div>
+    </div>
+  </div>
+
+  <div class="gen-label"><i class="ti ti-home"></i> Gia đình chị Thảo <span style="font-weight:400;font-size:11px;color:#888;margin-left:8px;"><i class="ti ti-map-pin" style="font-size:12px;"></i> 45 Đường 6D, Khu Trung Sơn, Xã Bình Hưng, TP.HCM</span></div>
+  <div class="members-grid">
+    <div class="member-card">
+      <div class="member-avatar" style="background:#E6F1FB;color:#185FA5;">NTT</div>
+      <div class="member-name">Nguyễn Thị Thanh Thảo</div>
+      <div class="member-role">Chị · Cầu nối yêu thương</div>
+      <div class="member-dob">02/11/1980 · Thế hệ 2</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar" style="background:#EAF3DE;color:#3B6D11;">MLS</div>
+      <div class="member-name">Mai Linh San</div>
+      <div class="member-role">Cháu · Mầm xanh tương lai</div>
+      <div class="member-dob">17/05/2010 · Thế hệ 3</div>
+    </div>
+    <div class="member-card">
+      <div class="member-avatar" style="background:#FAEEDA;color:#633806;">MLD</div>
+      <div class="member-name">Mai Linh Đan</div>
+      <div class="member-role">Cháu · Tiếng cười gia đình</div>
+      <div class="member-dob">25/11/2012 · Thế hệ 3</div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- BỘ LỌC CHỦ ĐỀ -->
+<div class="bg-alt" style="padding:3rem 1.5rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="section-header">
+      <div class="section-tag">Bộ lọc</div>
+      <h2 class="section-title">Lọc theo chủ đề</h2>
+    </div>
+    <div class="themes-grid">
+      <button class="theme-pill active" onclick="filterYear(this,'all')"><i class="ti ti-grid-3x3"></i> Tất cả</button>
+      <button class="theme-pill" onclick="filterYear(this,'2026')"><i class="ti ti-calendar"></i> Năm 2026</button>
+      <button class="theme-pill" onclick="filterYear(this,'2025')"><i class="ti ti-calendar"></i> Năm 2025</button>
+    </div>
+  </div>
+</div>
+
+<!-- ALBUM ẢNH THẬT -->
+<div class="section" id="album">
+  <div class="section-header">
+    <div class="section-tag">Album ảnh</div>
+    <h2 class="section-title">Hành trình qua từng năm tháng</h2>
+    <p class="section-desc">75 bức ảnh kỷ niệm của gia đình — nhấn vào ảnh để xem lớn.</p>
+  </div>
+
+  <!-- NĂM 2026 -->
+  <div class="year-group" id="grp-2026">
+    <div class="year-label">
+      <span class="year-badge">2026</span>
+      <div class="year-line"></div>
+      <span class="year-count">41 ảnh</span>
+    </div>
+    <div class="photo-masonry" id="gallery-2026">
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7883252360408_41f76218fca2e86f4d3fc34c3a02fa2a.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7883254655121_a6a8521abf316110f1e94f9736c4e52e.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7884292507649_512e6cb2bdbd6531d627c577e0b01596.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7884302874370_a0aaaf98f919d2e15c0832ecea7d6d9d.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7884362339984_991052e886f2b6e2a4bd1fd1999cea40.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7884372483089_907236f38684b68b8221d27ad47c5129.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7884593873687_f10045cbda772c23ccd98ab50978b152.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885123556050_38ffd61b6afc746d08374027ea2a7e6c.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885123641447_67427d8430e8eac34da226d62c144c91.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885123705256_0cb21f1411b049f856b2711ed1639329.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885123805441_1cd8587c54c41cfd0a9e88e9e6757386.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885128725830_0a9379dda9e3ada6cac3ce8854f6670c.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885133174045_c8e27e0ca8670b3bc835eb9e6efe6694.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885593380616_2f33a216e6a9a3533413fde4844f0b3e.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7885593477250_7c67ea5cb27ed1fbf9db6f81cb04f88e.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7888240162649_2cef251f8fcd2f3521a1cb05b656d4e1.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7889857624915_4cd7a5a2e7f3a870a9b95610b5024ece.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7889857630535_256cfee5e37a0d9bc384f1e626edf7c1.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7889857635200_87884579440b50df5c525a0d61c908fd.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7889857640177_4458355d81f2bc5da13613965880f99c.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7889857645748_aae7e4f911d20a462269501deb64e9c2.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7889867640039_8fbbead36b5b7ad143ee439f04c772d6.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7928430423861_1ca4bbcdf3d0b1409a60e4a31c97eea7.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7928430622187_14135d59dce15181225df99862c5fe5b.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7928935152236_7bc72b1a2da1171c0eda7e07dead5cd8.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7933063439054_c4e602135089d532a0cd94a2db9834d6.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7933163838954_1a89ae3a22eb45f4805fa01d0c3c7790.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7933163846062_43012d7eae0cc72a68edff06dad79438.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7933163874997_860061f93215426b464c6d556c860ca4.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7933170124657_05a23381678a3ae9a72b03266acc0710.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957068202322_1d2a44b7461ca97d50fcd4980a9e2aec.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957068521781_7ec196e770529c922c4838adafac8813.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957069413577_6623093247b0f4204b4fa1948fde31db.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957069894626_f5ddc803e5deabf3647d8930e4a47a01.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957070522615_eda3a2ba51908577fe77bd418044f4b5.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957070795764_11109e859cdc8da3af9d24465cdc4f87.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957071496512_7d2dd6c7b0da1063617ec21d58120109.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957072181940_959951d06ad2540fd193f8af80f836d6.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957073344594_fce27715815857820e05cae776993bcb.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957073717682_7621a330cabb73582f571975a44ab19e.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2026/z7957075237804_88d8cfdb94ce0691d0f2a955f2c736eb.jpg" loading="lazy" alt="Ảnh gia đình 2026"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+    </div>
+  </div>
+
+  <!-- NĂM 2025 -->
+  <div class="year-group" id="grp-2025">
+    <div class="year-label">
+      <span class="year-badge">2025</span>
+      <div class="year-line"></div>
+      <span class="year-count">34 ảnh</span>
+    </div>
+    <div class="photo-masonry" id="gallery-2025">
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957081682467_ce7f3c08be605d9ea428d26e4f7828fe.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957081943099_0c6ede6ad12d2d6aac9a737e0cf3fb68.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957082244623_37ce739d496c79ba8d16e7c0771c8d37.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957082854553_4fd9ce71f0452647853e69a1cb3ed049.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957083583920_183481a32bf238328401a86c2389898e.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957084503491_62250fcc69ebbe187a4694ccf353b924.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957085380969_e34c2b5d50a703edecd4a8c0c120d1de.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957087367297_499fd0510c397b72b6a8f3a0adbbe738.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957088032049_a03a8ad5dfcaaaf4fdb343ddb3c854bf.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957088761200_485e1a1ae3294d5952b264f2f88c4d52.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957089243318_9c641e610d1c746648910cb2176b9094.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957089965676_4ad5951acef29421f08acda2d0a97e6a.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957090814769_c0a6f3b2194d69603fe7b1135eab4443.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957091359034_2b7fcf707e6cbdcae3298c1b3866d958.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957092369366_230bf73fff43295dce776423707fd1b4.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957092807958_0f74613e7c77b0982c6432f547cc6eef.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957093912884_f54177a49a0f77dfc2b777bff353c677.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957094459063_c32fe28c2176eca85a25f7b35381f446.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957094852271_d3f668060eba46f5d7cea7f3336efdb6.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957095462384_cde3146b76298cf6c392c80e1a030da3.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957095815116_07a34abcfc7ecdb80f2f123109178ee6.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957096555833_d3a80bd1d636f5367d4bb6f643e914a7.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957098340764_08424c83c7b8114a7206ce2562e19d25.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957099631184_16b4b2d1c773670ab8dddc0234259658.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957100414718_0e207b584af5cec18074c2c1655fc0f4.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957100705931_94af097d3fb34c8e626dad8d42bed1c6.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957101194417_085f5664b5d1e56384f29bf53ba839a6.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957102098317_9a4add7fcc502f1897c879ba45646bf5.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957104872744_fa3d47363aa7c0d96062595c7502cd47.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957105660751_805c6863bea66d94a6c6d64958b06282.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957106568712_efc68367dacde2c0db2ff38a5c522ded.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957107287720_5397e3d7f78bd6fb504ac6f7b734445d.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957107734311_5118393491c47d3e1a3c7438a7372bbe.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+      <div class="pm-item" onclick="lbOpen(this)"><img src="Photo and Video/photos 2025/z7957109948044_9e57f1cf1e2356fed1e4cbbaf1b1fcb0.jpg" loading="lazy" alt="Ảnh gia đình 2025"><div class="pm-overlay"><i class="ti ti-zoom-in"></i></div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="sep">
+
+<!-- VIDEO THẬT -->
+<div class="section" id="video">
+  <div class="section-header">
+    <div class="section-tag">Video gia đình</div>
+    <h2 class="section-title">Những chuyến đi đáng nhớ</h2>
+    <p class="section-desc">Kỷ niệm du lịch cùng nhau — mỗi hành trình là một trang ký ức đẹp.</p>
+  </div>
+</div>
+
+<!-- Video 1: Nha Trang 2026 -->
+<div class="video-block-label" style="max-width:960px;margin:0 auto 10px;padding:0 1.5rem;display:flex;align-items:center;gap:10px">
+  <span style="background:linear-gradient(135deg,#1D9E75,#0F6E56);color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;">2026</span>
+  <span style="font-size:15px;font-weight:600;color:#111;">Du lịch Nha Trang</span>
+  <span style="font-size:13px;color:#888;">30/05 – 01/06/2026</span>
+</div>
+<div class="video-section-wrap">
+  <video controls preload="metadata">
+    <source src="Photo and Video/Video/Video du lich Nha Trang (30.5-01.6.26).mp4" type="video/mp4">
+  </video>
+</div>
+<div class="video-caption">
+  <i class="ti ti-map-pin"></i>
+  <span>Du lịch Nha Trang &nbsp;·&nbsp; 30/05 – 01/06/2026 &nbsp;·&nbsp; Đại gia đình 70–70A Trường Định</span>
+</div>
+
+<!-- Video 2: Đà Lạt 2025 -->
+<div class="video-block-label" style="max-width:960px;margin:2.5rem auto 10px;padding:0 1.5rem;display:flex;align-items:center;gap:10px">
+  <span style="background:linear-gradient(135deg,#c9a84c,#a07828);color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;">2025</span>
+  <span style="font-size:15px;font-weight:600;color:#111;">Du lịch Đà Lạt</span>
+  <span style="font-size:13px;color:#888;">Đầu năm 2025</span>
+</div>
+<div class="video-section-wrap">
+  <video controls preload="metadata">
+    <source src="Photo and Video/Video/Đà Lạt đầu năm 2025 - YouTube.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="video-caption">
+  <i class="ti ti-map-pin"></i>
+  <span>Du lịch Đà Lạt &nbsp;·&nbsp; Đầu năm 2025 &nbsp;·&nbsp; Đại gia đình 70–70A Trường Định</span>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote-text">Gần 50 năm — không phải thời gian làm nên gia đình, mà chính là tình yêu thương được chọn lại mỗi ngày.</p>
+  <div class="quote-attr">— Đại gia đình 70–70A Trường Định</div>
+</div>
+
+<!-- DẤU MỐC -->
+<div id="milestone" class="bg-alt" style="padding:3.5rem 1.5rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="section-header">
+      <div class="section-tag">Dấu mốc gia đình</div>
+      <h2 class="section-title">Hành trình gần 50 năm</h2>
+      <p class="section-desc">Từng bước đi, từng kỷ niệm — dệt nên câu chuyện yêu thương của đại gia đình 70–70A Trường Định.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#0F6E56;"><i class="ti ti-heart"></i></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-year">1975 – 1978</div>
+          <h3 class="tl-title">Nền móng gia đình</h3>
+          <p class="tl-desc">Ông Nguyễn Văn Ngôi (1956) và Bà Nguyễn Thị Phỉ (1955) nên duyên vợ chồng — khởi đầu cho hành trình yêu thương gần 50 năm của đại gia đình.</p>
+          <div class="tl-tags">
+            <span class="tl-tag green"><i class="ti ti-rings-wedding"></i> Hôn nhân</span>
+            <span class="tl-tag green"><i class="ti ti-home"></i> Lập nghiệp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#854F0B;"><i class="ti ti-home"></i></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-year">Những năm 1980s</div>
+          <h3 class="tl-title">Xây dựng ngôi nhà 70 Trường Định</h3>
+          <p class="tl-desc">Ngôi nhà số 70 Trường Định được xây dựng — mái ấm đầu tiên, nơi ghi dấu biết bao kỷ niệm của cả gia đình qua nhiều thế hệ.</p>
+          <div class="tl-tags">
+            <span class="tl-tag amber"><i class="ti ti-building"></i> Ngôi nhà</span>
+            <span class="tl-tag amber"><i class="ti ti-star"></i> Dấu mốc lớn</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#534AB7;"><i class="ti ti-baby-carriage"></i></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-year">1979 – 1980</div>
+          <h3 class="tl-title">Chào đón thế hệ thứ hai</h3>
+          <p class="tl-desc">Anh Nguyễn Quang Vinh chào đời (13/03/1979) và Chị Nguyễn Thị Thanh Thảo chào đời (02/11/1980) — hai người con nối tiếp tình yêu thương của ông bà.</p>
+          <div class="tl-tags">
+            <span class="tl-tag purple"><i class="ti ti-baby-carriage"></i> Sinh con</span>
+            <span class="tl-tag purple"><i class="ti ti-users"></i> Gia đình lớn hơn</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#993C1D;"><i class="ti ti-rings-wedding"></i></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-year">2004 & 2008</div>
+          <h3 class="tl-title">Anh Vinh & Chị Thảo lập gia đình</h3>
+          <p class="tl-desc">Anh Nguyễn Quang Vinh kết hôn cùng Chị Hồ Thị Thanh Bình năm <strong>2004</strong>, hiện sinh sống tại 22 Đường số 7, Khu Him Lam, P. Tân Hưng, TP.HCM. Chị Nguyễn Thị Thanh Thảo lập gia đình năm <strong>2008</strong>, hiện sinh sống tại 45 Đường 6D, Khu Trung Sơn, Xã Bình Hưng, TP.HCM.</p>
+          <div class="tl-tags">
+            <span class="tl-tag coral"><i class="ti ti-rings-wedding"></i> Anh Vinh cưới 2004</span>
+            <span class="tl-tag coral"><i class="ti ti-rings-wedding"></i> Chị Thảo cưới 2008</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#185FA5;"><i class="ti ti-baby-carriage"></i></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-year">2005 – 2014</div>
+          <h3 class="tl-title">Chào đón thế hệ thứ ba</h3>
+          <p class="tl-desc">Năm người cháu lần lượt chào đời: Nguyễn Hồ Khang (2005), Mai Linh San (2010), Mai Linh Đan (2012), Nguyễn Hồ Song Thư (2014) — tiếng cười làm ấm cả hai ngôi nhà.</p>
+          <div class="tl-tags">
+            <span class="tl-tag blue"><i class="ti ti-users"></i> Thế hệ 3</span>
+            <span class="tl-tag blue"><i class="ti ti-confetti"></i> Niềm vui mới</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#1D9E75;"><i class="ti ti-plane"></i></div>
+        <div class="tl-line"></div>
+        <div class="tl-card">
+          <div class="tl-year">Tháng 5–6 / 2026</div>
+          <h3 class="tl-title">Du lịch Nha Trang — Cả nhà cùng đi</h3>
+          <p class="tl-desc">Chuyến du lịch Nha Trang (30/05 – 01/06/2026) — lần đầu tiên cả đại gia đình cùng khám phá biển, tạo nên bộ ảnh và video kỷ niệm đáng nhớ.</p>
+          <div class="tl-tags">
+            <span class="tl-tag green"><i class="ti ti-beach"></i> Du lịch biển</span>
+            <span class="tl-tag green"><i class="ti ti-camera"></i> Kỷ niệm 75 ảnh</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item tl-future">
+        <div class="tl-dot" style="background:linear-gradient(135deg,#f0a500,#e08800);"><i class="ti ti-confetti"></i></div>
+        <div class="tl-card" style="border:2px solid #f0a500;">
+          <div class="tl-year" style="color:#854F0B;">Sắp tới · ~2025–2026</div>
+          <h3 class="tl-title" style="color:#633806;">Kỷ niệm 50 năm ông bà 🎉</h3>
+          <p class="tl-desc">Một cột mốc vàng son — nửa thế kỷ yêu thương, gắn bó và vun đắp. Cả gia đình sẽ cùng nhau tổ chức lễ kỷ niệm trọng đại này.</p>
+          <div class="tl-tags">
+            <span class="tl-tag amber"><i class="ti ti-star"></i> 50 năm vàng</span>
+            <span class="tl-tag amber"><i class="ti ti-heart"></i> Đang chờ đón</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .timeline{position:relative;padding-left:0}
+  .tl-item{display:flex;gap:20px;margin-bottom:2rem;align-items:flex-start}
+  .tl-item:last-child .tl-line{display:none}
+  .tl-dot{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0;position:relative;z-index:1;box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+  .tl-line-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+  .tl-line{width:2px;background:linear-gradient(#ddd,#eee);flex:1;min-height:40px;margin:0 auto;position:relative;left:-33px;top:0;height:calc(100% + 2rem)}
+  .tl-card{background:#fff;border:1px solid #eee;border-radius:16px;padding:1.2rem 1.4rem;flex:1;transition:box-shadow .2s}
+  .tl-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.08)}
+  .tl-year{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#1D9E75;margin-bottom:.4rem}
+  .tl-title{font-size:16px;font-weight:700;color:#111;margin-bottom:.5rem}
+  .tl-desc{font-size:13px;color:#666;line-height:1.7;margin-bottom:.8rem}
+  .tl-tags{display:flex;gap:8px;flex-wrap:wrap}
+  .tl-tag{font-size:11px;padding:4px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;font-weight:500}
+  .tl-tag.green{background:#E1F5EE;color:#085041}
+  .tl-tag.amber{background:#FAEEDA;color:#633806}
+  .tl-tag.purple{background:#EEEDFE;color:#3C3489}
+  .tl-tag.coral{background:#FAECE7;color:#712B13}
+  .tl-tag.blue{background:#E6F1FB;color:#0C447C}
+  .tl-future .tl-card{background:#FFFDF5}
+</style>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div style="margin-bottom:1rem;">
+    <svg width="60" height="60" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" style="opacity:.7">
+      <circle cx="90" cy="90" r="86" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+      <g transform="translate(90,88)">
+        <polygon points="0,-34 32,2 -32,2" fill="rgba(255,255,255,0.7)"/>
+        <rect x="-24" y="2" width="48" height="30" rx="2" fill="rgba(255,255,255,0.6)"/>
+        <rect x="-7" y="14" width="14" height="18" rx="3" fill="rgba(15,110,86,0.6)"/>
+      </g>
+      <g transform="translate(90,140)">
+        <path d="M0,8 C0,8 -14,-3 -14,-11 C-14,-17 -8,-21 0,-15 C8,-21 14,-17 14,-11 C14,-3 0,8 0,8 Z" fill="rgba(255,120,120,0.8)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="footer-logo">Đại Gia Đình 70–70A Trường Định</div>
+  <div class="footer-sub">Yêu thương · Gắn kết · Sẻ chia · Vun đắp · Gần 50 năm bên nhau</div>
+  <div class="footer-links">
+    <a class="footer-link" href="#album">Album ảnh</a>
+    <a class="footer-link" href="#video">Video</a>
+    <a class="footer-link" href="#">Thành viên</a>
+    <a class="footer-link" href="#">Dấu mốc</a>
+  </div>
+  <div class="footer-copy">Được xây dựng với tình yêu thương — Gia đình luôn là nơi để trở về ❤️</div>
+</div>
+
+<script>
+  // ── LIGHTBOX ──
+  let lbImgs = [], lbIdx = 0;
+
+  function buildImgList() {
+    lbImgs = Array.from(document.querySelectorAll('.pm-item img'));
+  }
+
+  function lbOpen(el) {
+    buildImgList();
+    const img = el.querySelector('img');
+    lbIdx = lbImgs.indexOf(img);
+    lbShow();
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lbShow() {
+    document.getElementById('lb-img').src = lbImgs[lbIdx].src;
+    document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImgs.length;
+  }
+
+  function lbNav(dir) {
+    lbIdx = (lbIdx + dir + lbImgs.length) % lbImgs.length;
+    lbShow();
+  }
+
+  function lbClose() {
+    document.getElementById('lb').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lb').addEventListener('click', function(e) {
+    if (e.target === this) lbClose();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lb').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') lbNav(1);
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'Escape') lbClose();
+  });
+
+  // ── FILTER BY YEAR ──
+  function filterYear(btn, year) {
+    document.querySelectorAll('.theme-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const g2025 = document.getElementById('grp-2025');
+    const g2026 = document.getElementById('grp-2026');
+    if (year === 'all') { g2025.style.display = ''; g2026.style.display = ''; }
+    else if (year === '2026') { g2026.style.display = ''; g2025.style.display = 'none'; }
+    else if (year === '2025') { g2025.style.display = ''; g2026.style.display = 'none'; }
+    buildImgList();
+  }
+</script>
+</body>
+</html>
